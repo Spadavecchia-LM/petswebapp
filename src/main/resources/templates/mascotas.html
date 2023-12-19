@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Mascotas</title>
+</head>
+<body class="container-fluid mx-auto">
+
+<h1>Lista de mascotas</h1>
+
+<!-- botones de acciones -->
+
+<a th:href="@{/agregarDuenio}"><button type="button">AGREGAR DUEÑO</button></a>
+<a th:href="@{/agregarMascota}"><button type="button">AGREGAR MASCOTA</button></a>
+
+<table class="table-primary">
+  <thead>
+  <tr>
+    <th >ID</th>
+    <th >NOMBRE</th>
+    <th>ESPECIE</th>
+    <th >EDAD</th>
+    <th>DUENIO</th>
+      <th >ACCIONES</th>
+
+  </tr>
+  </thead>
+  <tbody >
+    <tr th:each="mascota : ${mascotas}">
+        <td th:text="${mascota.id}" ></td>
+        <td th:text="${mascota.nombre}" ></td>
+        <td th:text="${mascota.especie}" ></td>
+        <td th:text="${mascota.edad}" ></td>
+        <td th:text="${mascota.duenio.nombre}" ></td>
+        <td>
+            <a th:href="@{/eliminarMascota/{id}(id = ${mascota.id})}"><button type="button" class="btn btn-danger">eliminar</button></a>
+            <a th:href="@{/actualizarMascota/{id}(id = ${mascota.id})}"><button type="button" class="btn btn-primary">editar</button></a>
+        </td>
+
+    </tr>
+  </tbody>
+</table>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

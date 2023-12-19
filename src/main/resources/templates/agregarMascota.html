@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>AGREGAR MASCOTA</title>
+</head>
+<body>
+
+<h2>AGREGAR MASCOTAS</h2>
+
+<form th:action="@{/guardarMascota}" method="post" th:object="${mascota}">
+
+  <label for="nombre">NOMBRE</label>
+  <input type="text" id="nombre" name="nombre" th:field="*{nombre}" />
+
+  <br><hr><br>
+
+  <label for="especie">ESPECIE</label>
+  <input type="text" id="especie" name="especie" th:field="*{especie}" />
+
+  <br><hr><br>
+
+  <label for="edad">EDAD</label>
+  <input type="number" id="edad" name="edad" th:field="*{edad}" />
+
+  <br><hr><br>
+
+  <label for="duenio">dueño:</label>
+  <select id="duenio" name="idDuenio">
+    <option th:each="duenio : ${duenios}" th:value="${duenio.id}" th:text="${duenio.nombre}"></option>
+  </select>
+
+
+
+  <button type="submit">AGREGAR MASCOTA</button>
+</form>
+ <hr>
+
+
+<a th:href="@{/mascotas}"><button>ver listado de mascotas</button></a>
+
+</body>
+</html>
